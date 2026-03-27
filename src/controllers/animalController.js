@@ -43,7 +43,7 @@ async function listarAnimais(req, res) {
 
 async function listarAnimalById(req, res) {
   try {
-    const idAnimal = req.params;
+    const { idAnimal } = req.params;
 
     if (!idAnimal) {
       return res.status(400).json({
@@ -163,7 +163,7 @@ async function deletarAnimal(req, res) {
     console.error(error);
 
     return res.status(500).json({
-      erro: "Erro ao inativar animal"
+      erro: "Erro ao deletar animal"
     });
   }
 }
