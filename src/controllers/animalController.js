@@ -19,6 +19,8 @@ async function cadastrarAnimal(req, res) {
   } catch (error) {
     console.error(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao cadastrar animal"
     });
