@@ -37,6 +37,8 @@ async function listarAnimais(req, res) {
   } catch (error) {
     console.log(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao listar animais"
     })
@@ -71,6 +73,8 @@ async function listarAnimalById(req, res) {
   } catch (error) {
     console.error(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao encontrar animal"
     });
@@ -103,6 +107,8 @@ async function editarAnimal(req, res) {
   } catch (error) {
     console.error(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao editar animal"
     });
@@ -134,6 +140,8 @@ async function inativarAnimal(req, res) {
   } catch (error) {
     console.error(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao inativar animal"
     });
@@ -163,6 +171,8 @@ async function deletarAnimal(req, res) {
     }
   } catch (error) {
     console.error(error);
+
+    res.locals.erroMsg = error.message;
 
     return res.status(500).json({
       erro: "Erro ao deletar animal"

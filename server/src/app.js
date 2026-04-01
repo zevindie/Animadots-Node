@@ -8,8 +8,8 @@ const app = express();
 
 morgan.token('erro-msg', (req, res) => res.locals.erroMsg || '');
 morgan.token("body", (req) => JSON.stringify(req.body));
-app.use(morgan(':method :url :status :body :erro-msg'));
 
+app.use(morgan(':method :url :status :body :erro-msg'));
 app.use(express.json());
 
 app.use("/animal", animalRoutes);

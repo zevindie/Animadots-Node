@@ -19,6 +19,8 @@ async function cadastrarFuncionario(req, res) {
   } catch (error) {
     console.error(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao cadastrar funcionário"
     });
@@ -69,6 +71,8 @@ async function listarFuncionarioById(req, res) {
   } catch (error) {
     console.error(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao encontrar funcionário"
     });
@@ -101,6 +105,8 @@ async function editarFuncionario(req, res) {
   } catch (error) {
     console.error(error);
 
+    res.locals.erroMsg = error.message;
+
     return res.status(500).json({
       erro: "Erro ao editar funcionário"
     });
@@ -130,6 +136,8 @@ async function deletarFuncionario(req, res) {
     }
   } catch (error) {
     console.error(error);
+
+    res.locals.erroMsg = error.message;
 
     return res.status(500).json({
       erro: "Erro ao deletar funcionário"
