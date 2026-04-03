@@ -3,7 +3,7 @@
   padding: 32px;
   border-radius: 16px;
   width: 340px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 2);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -11,7 +11,9 @@
 
 .title {
   margin: 0;
-  margin-bottom: 8px
+  align-self: center;
+  margin: 16px;
+  font-size: 16pt;
 }
 
 .input {
@@ -21,14 +23,22 @@
 }
   
 .botao {
+  margin-top: 20px;
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background-color: #111827;
+  background-color: black;
   color: #fff;
   cursor: pointer;
 }
 
+.botao:hover {
+  background-color: #8c52ff;
+}
+
 .text {
-  color: #333;
+  /* background-color: #e20101b8; */
+  /* padding: 15px; */
+  color: #e20101b8;
+  /* border-radius: 5px; */
 }

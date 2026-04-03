@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 
+const loginRoutes = require("./routes/loginRoutes");
 const animalRoutes = require("./routes/animalRoutes");
 const funcionarioRoutes = require("./routes/funcionarioRoutes");
 
@@ -12,6 +13,7 @@ morgan.token("body", (req) => JSON.stringify(req.body));
 app.use(morgan(':method :url :status :body :erro-msg'));
 app.use(express.json());
 
+app.use("/login", loginRoutes);
 app.use("/animal", animalRoutes);
 app.use("/funcionario", funcionarioRoutes);
 

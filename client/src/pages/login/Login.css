@@ -1,0 +1,10 @@
+body {
+    background: linear-gradient(rgba(255, 255, 255, 0.693), rgba(255, 255, 255, 0.604)), url("../../assets/bg.png");
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
