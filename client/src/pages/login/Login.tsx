@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useState } from 'react'
 
 import './Login.css'
@@ -6,12 +7,21 @@ import imagem from '../../assets/logo.png'
 import Card from '../../components/card/Card'
 
 function Login() {
-    const [login, setLogin] = useState('')
+    const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [mensagem, setMensagem] = useState('')
 
-    function mostrarMensagem() {
-        setMensagem(`Olá, ${login}! Sua senha é ${senha}.`)
+    async function handleLogin(e: any) {
+        e.preventDefault()
+
+        try {
+            await axios.post('http://localhost:3000/login/logar', {
+                "emailFuncionario": email,
+                "senhaFuncionario": senha
+            })
+        } catch (error: any) {
+            setMensagem('Login inválido. Verifique o e-mail e senha e tente novamente.')                        
+        }
     }
 
     function limparMensagem() {
@@ -23,12 +33,12 @@ function Login() {
             <div className="page">
                 <Card
                     imagem={imagem}
-                    login={login}
+                    email={email}
                     senha={senha}
-                    onLoginChange={setLogin}
+                    onEmailChange={setEmail}
                     onSenhaChange={setSenha}
                     onUserTyping={limparMensagem}
-                    onMostrarMensagem={mostrarMensagem}
+                    handleLogin={handleLogin}
                     mensagem={mensagem}
                 />
             </div>

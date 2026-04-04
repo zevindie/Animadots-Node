@@ -1,3 +1,4 @@
+const cors = require('cors')
 const express = require("express");
 const morgan = require("morgan");
 
@@ -12,6 +13,8 @@ morgan.token("body", (req) => JSON.stringify(req.body));
 
 app.use(morgan(':method :url :status :body :erro-msg'));
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/login", loginRoutes);
 app.use("/animal", animalRoutes);

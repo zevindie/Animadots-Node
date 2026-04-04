@@ -16,10 +16,17 @@
   font-size: 16pt;
 }
 
+form {
+  width: auto;
+  align-items: center;
+}
+
 .input {
-  padding: 12px;
+  padding: 12px 5px;
   border-radius: 8px;
-  border: 1px solid #ccc
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  width: 97%; 
 }
   
 .botao {

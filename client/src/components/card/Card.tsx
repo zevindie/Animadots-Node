@@ -1,12 +1,12 @@
 import './Card.css'
 
 type CardProps = {
-  login: string
+  email: string
   senha: string
-  onLoginChange: (valor: string) => void
+  onEmailChange: (valor: string) => void
   onSenhaChange: (valor: string) => void
   onUserTyping: () => void
-  onMostrarMensagem: () => void
+  handleLogin: (e: any) => void
   mensagem: string
   imagem: string
 }
@@ -17,27 +17,29 @@ function Card(props: CardProps) {
       <img src={props.imagem} alt="Logo" />
       <p className="title">Bem-vindo(a)!</p>
 
-      <input
-        className="input"
-        type="text"
-        value={props.login}
-        onChange={(e) => {props.onLoginChange(e.target.value); props.onUserTyping()}}
-        placeholder="Digite seu login"
-      />
+      <form onSubmit={props.handleLogin}>
+        <input
+          className="input"
+          type="text"
+          value={props.email}
+          onChange={(e) => {props.onEmailChange(e.target.value); props.onUserTyping()}}
+          placeholder="Digite seu login"
+        />
+        <br/>
+        <input
+          className="input"
+          type="password"
+          value={props.senha}
+          onChange={(e) => {props.onSenhaChange(e.target.value); props.onUserTyping()}}
+          placeholder="Digite sua senha"
+        />
 
-      <input
-        className="input"
-        type="password"
-        value={props.senha}
-        onChange={(e) => {props.onSenhaChange(e.target.value); props.onUserTyping()}}
-        placeholder="Digite sua senha"
-      />
-
-      {props.mensagem && <p className="text">{props.mensagem}</p>}
-
-      <button className="botao" onClick={props.onMostrarMensagem}>
-        Acessar
-      </button>
+        {props.mensagem && <p className="text">{props.mensagem}</p>}
+        <br/>
+        <button className="botao" type="submit">
+          Acessar
+        </button>
+      </form>
     </div>
   )
 }
