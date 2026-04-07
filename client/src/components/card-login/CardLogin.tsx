@@ -1,4 +1,4 @@
-import './Card.css'
+import './CardLogin.css'
 
 type CardProps = {
   email: string
