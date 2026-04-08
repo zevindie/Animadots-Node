@@ -15,7 +15,7 @@ async function criarAnimal({ nomeAnimal, racaAnimal }) {
 
 async function listarAnimais() {
   const query = `select * from animal 
-    where ativoAnimal is true 
+    --where ativoAnimal is true 
     order by idAnimal
   `;
 

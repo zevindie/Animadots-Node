@@ -23,7 +23,7 @@ function Login() {
                 "senhaFuncionario": senha
             })
 
-            navigate('/home')
+            navigate('/gerenciar-animal')
         } catch (error: any) {
             setMensagem('Login inválido. Verifique o e-mail e senha e tente novamente.')                        
         }

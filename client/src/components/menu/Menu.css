@@ -1,31 +1,28 @@
-header {
-    width: 100%;
-    height: 100px;
-    background-color: #282c34;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-sizing: border-box;
-    margin: 0;
-    margin-bottom: auto;
+.app-bar {
+  position: static !important;
+  width: 100% !important;
+  background-color: #1e1e1e !important;
+  box-shadow: none !important;
 }
 
-.logo {
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
+.botao-menu {
+  position: relative;
+  margin: 0 8px !important;
+  color: #fff !important;
+  transition: all 0.3s;
 }
 
-.menu {
-    display: flex;
-    gap: 10px;
+.botao-menu::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s;
 }
 
-button {
-    background-color: #61dafb;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
+.botao-menu:hover::after {
+  width: 100%;
 }
