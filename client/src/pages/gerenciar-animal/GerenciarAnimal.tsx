@@ -31,7 +31,7 @@ function GerenciarAnimal() {
                     <h1>Gerenciar Animais</h1>
                 </div>
                 <div className="container-sm">
-                    <Tabela lista={animais} />
+                    <Tabela lista={animais}/>
                 </div>
             </div>
         </>

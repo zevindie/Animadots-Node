@@ -14,9 +14,14 @@ async function criarAnimal({ nomeAnimal, racaAnimal }) {
 }
 
 async function listarAnimais() {
-  const query = `select * from animal 
-    --where ativoAnimal is true 
-    order by idAnimal
+  const query = `select
+                idAnimal as ID,
+                nomeAnimal as Nome,
+                racaAnimal as Raça,
+                ativoAnimal as Ativo
+              from animal 
+              --where ativoAnimal is true 
+              order by idAnimal
   `;
 
   const result = await db.query(query);
