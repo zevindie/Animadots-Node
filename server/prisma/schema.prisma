@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model adocao {
+  idadocao                 Int         @id @default(autoincrement())
+  datacriacaoadocao        DateTime?   @default(now()) @db.Timestamp(6)
+  datamodificacaoadocao    DateTime    @db.Date
+  statusadocao             String      @db.VarChar(255)
+  animalIdAnimal           Int
+  internautaIdInternauta   Int
+  funcionarioIdFuncionario Int
+  internauta               internauta  @relation(fields: [internautaIdInternauta], references: [idinternauta], onDelete: NoAction, onUpdate: NoAction, map: "fk_adocao_internauta")
+  animal                   animal      @relation(fields: [animalIdAnimal], references: [idanimal], onDelete: NoAction, onUpdate: NoAction, map: "fk_adocaoanimal")
+  funcionario              funcionario @relation(fields: [funcionarioIdFuncionario], references: [idfuncionario], onDelete: NoAction, onUpdate: NoAction, map: "fk_adocaofuncionario")
+}
+
+model animal {
+  idanimal          Int      @id @default(autoincrement())
+  nomeanimal        String   @db.VarChar(255)
+  sexoanimal        String   @db.VarChar(255)
+  racaanimal        String   @db.VarChar(255)
+  idadeanimal       Int
+  vacinadoanimal    String   @db.VarChar(255)
+  castradoanimal    Boolean
+  vermifugadoanimal Boolean
+  especieanimal     String   @db.VarChar(255)
+  coranimal         String   @db.VarChar(255)
+  porteanimal       String   @db.VarChar(255)
+  deficienciaanimal String   @db.VarChar(255)
+  fotoanimal        String   @db.VarChar(255)
+  videoanimal       String   @db.VarChar(255)
+  adotadoanimal     String   @db.VarChar(255)
+  notasanimal       String   @db.VarChar(255)
+  adocao            adocao[]
+}
+
+model funcionario {
+  idfuncionario       Int      @id @default(autoincrement())
+  nomefuncionario     String   @db.VarChar(255)
+  rgfuncionario       String   @db.VarChar(255)
+  cpffuncionario      String   @db.VarChar(255)
+  telefonefuncionario String   @db.VarChar(255)
+  loginfuncionario    String   @db.VarChar(255)
+  senhafuncionario    String   @db.VarChar(255)
+  enderecofuncionario String   @db.VarChar(255)
+  adocao              adocao[]
+}
+
+model internauta {
+  idinternauta                Int      @id @default(autoincrement())
+  nomeinternauta              String   @db.VarChar(255)
+  rginternauta                String   @db.VarChar(255)
+  cpfinternauta               String   @db.VarChar(255)
+  telefoneinternauta          String   @db.VarChar(255)
+  emailinternauta             String   @db.VarChar(255)
+  enderecointernauta          String   @db.VarChar(255)
+  residenciainternauta        String   @db.VarChar(255)
+  preferenciaAnimalInternauta String   @db.VarChar(255)
+  adocao                      adocao[]
+}

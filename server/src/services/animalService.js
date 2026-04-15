@@ -1,4 +1,5 @@
-const db = require("../db/connection");
+import prisma from '../lib/prisma.js'
+import db from '../db/connection.js'
 
 async function criarAnimal({ nomeAnimal, racaAnimal }) {
   const query = `
@@ -14,27 +15,30 @@ async function criarAnimal({ nomeAnimal, racaAnimal }) {
 }
 
 async function listarAnimais() {
-  const query = `select
-                idAnimal as ID,
-                nomeAnimal as Nome,
-                racaAnimal as Raça,
-                ativoAnimal as Ativo
-              from animal 
-              --where ativoAnimal is true 
-              order by idAnimal
-  `;
+    return prisma.animal.findMany();
+  // const query = `select
+  //               idAnimal as ID,
+  //               nomeAnimal as Nome,
+  //               racaAnimal as Raça
+  //             from animal 
+  //             --where ativoAnimal is true 
+  //             order by idAnimal
+  // `;
 
-  const result = await db.query(query);
-  return result.rows;
+  // const result = await db.query(query);
+  // return result.rows;
 }
 
-async function listarAnimalById({ idAnimal }) {
-  const query = `select * from animal where idAnimal = $1`;  
+async function listarAnimalById({ idanimal }) {
+  return prisma.animal.findUnique({
+    where: { idanimal: Number(idanimal) }
+  })
+  // const query = `select * from animal where idAnimal = $1`;  
 
-  const value = [idAnimal];
+  // const value = [idAnimal];
 
-  const result = await db.query(query, value);
-  return result.rows[0];
+  // const result = await db.query(query, value);
+  // return result.rows[0];
 }
 
 async function editarAnimal({ idAnimal, nomeAnimal, racaAnimal, ativoAnimal }) {
@@ -95,7 +99,7 @@ async function deletarAnimal({ idAnimal }) {
   return result;
 }
 
-module.exports = {
+export {
   criarAnimal,
   listarAnimais,
   listarAnimalById,

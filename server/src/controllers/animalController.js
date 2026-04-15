@@ -47,15 +47,15 @@ async function listarAnimais(req, res) {
 
 async function listarAnimalById(req, res) {
   try {
-    const { idAnimal } = req.params;
+    const { idanimal } = req.params;
 
-    if (!idAnimal) {
+    if (!idanimal) {
       return res.status(400).json({
         erro: "Id é obrigatório para pesquisar animal!"
       });
     }
 
-    const animal = await animalService.listarAnimalById({ idAnimal });
+    const animal = await animalService.listarAnimalById({ idanimal });
     const response = null;
 
     if (animal != undefined) {
