@@ -46,7 +46,7 @@ model funcionario {
   rgfuncionario       String   @db.VarChar(255)
   cpffuncionario      String   @db.VarChar(255)
   telefonefuncionario String   @db.VarChar(255)
-  loginfuncionario    String   @db.VarChar(255)
+  emailfuncionario    String   @unique @db.VarChar(255)
   senhafuncionario    String   @db.VarChar(255)
   enderecofuncionario String   @db.VarChar(255)
   adocao              adocao[]

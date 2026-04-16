@@ -15,30 +15,35 @@ async function criarAnimal({ nomeAnimal, racaAnimal }) {
 }
 
 async function listarAnimais() {
-    return prisma.animal.findMany();
-  // const query = `select
-  //               idAnimal as ID,
-  //               nomeAnimal as Nome,
-  //               racaAnimal as Raça
-  //             from animal 
-  //             --where ativoAnimal is true 
-  //             order by idAnimal
-  // `;
-
-  // const result = await db.query(query);
-  // return result.rows;
+  return prisma.animal.findMany();
 }
 
-async function listarAnimalById({ idanimal }) {
+async function listarAnimalById({ idAnimal }) {
   return prisma.animal.findUnique({
-    where: { idanimal: Number(idanimal) }
+    where: { idanimal: Number(idAnimal) }
   })
-  // const query = `select * from animal where idAnimal = $1`;  
+}
 
-  // const value = [idAnimal];
+async function listarAnimaisTabela() {
+  const animais = await prisma.animal.findMany({
+    select: {
+      idanimal: true,
+      nomeanimal: true,
+      racaanimal: true,
+      porteanimal: true,
+      sexoanimal: true
+    }
+  })
 
-  // const result = await db.query(query, value);
-  // return result.rows[0];
+  const resultado = animais.map(a => ({
+    'ID': a.idanimal,
+    'Nome': a.nomeanimal,
+    'Raça': a.racaanimal,
+    'Porte': a.porteanimal,
+    'Sexo': a.sexoanimal
+  }))
+
+  return resultado
 }
 
 async function editarAnimal({ idAnimal, nomeAnimal, racaAnimal, ativoAnimal }) {
@@ -103,6 +108,7 @@ export {
   criarAnimal,
   listarAnimais,
   listarAnimalById,
+  listarAnimaisTabela,
   editarAnimal,
   inativarAnimal,
   deletarAnimal

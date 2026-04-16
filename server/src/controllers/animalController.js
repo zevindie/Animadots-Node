@@ -47,15 +47,15 @@ async function listarAnimais(req, res) {
 
 async function listarAnimalById(req, res) {
   try {
-    const { idanimal } = req.params;
+    const { idAnimal } = req.params;
 
-    if (!idanimal) {
+    if (!idAnimal) {
       return res.status(400).json({
         erro: "Id é obrigatório para pesquisar animal!"
       });
     }
 
-    const animal = await animalService.listarAnimalById({ idanimal });
+    const animal = await animalService.listarAnimalById({ idAnimal });
     const response = null;
 
     if (animal != undefined) {
@@ -78,6 +78,24 @@ async function listarAnimalById(req, res) {
     return res.status(500).json({
       erro: "Erro ao encontrar animal"
     });
+  }
+}
+
+async function listarAnimaisTabela(req, res) {
+  try {
+    const lista = await animalService.listarAnimaisTabela();
+  
+    return res.status(200).json({
+      lista
+    })
+  } catch (error) {
+    console.log(error);
+
+    res.locals.erroMsg = error.message;
+
+    return res.status(500).json({
+      erro: "Erro ao listar animais"
+    })
   }
 }
 
@@ -184,6 +202,7 @@ module.exports = {
   cadastrarAnimal,
   listarAnimais,
   listarAnimalById,
+  listarAnimaisTabela,
   editarAnimal,
   inativarAnimal,
   deletarAnimal

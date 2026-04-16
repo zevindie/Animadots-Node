@@ -16,7 +16,7 @@ function Tabela(props: TabelaProps) {
 
   if (!props.lista || props.lista.length === 0) return <div>Sem dados</div>;
 
-  const colunas = Object.keys(props.lista[0]); // pega os campos do objeto
+  const colunas = Object.keys(props.lista[0]);
 
   return (
     <TableContainer component={Paper}>

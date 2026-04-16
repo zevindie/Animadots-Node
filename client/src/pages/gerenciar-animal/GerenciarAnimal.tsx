@@ -12,7 +12,7 @@ function GerenciarAnimal() {
     useEffect(() => {
         async function buscarAnimais() {
             try {
-                const response = await axios.get("http://localhost:3000/animal/listar");
+                const response = await axios.get("http://localhost:3000/animal/listarTabela");
                 setAnimais(response.data.lista);
                 console.log(response.data.lista);
             } catch (error) {

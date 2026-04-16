@@ -1,14 +1,15 @@
 .app-bar {
   position: static !important;
   width: 100% !important;
-  background-color: #1e1e1e !important;
+  background-color: #beecdf !important;
   box-shadow: none !important;
+  color: #000 !important;
 }
 
 .botao-menu {
   position: relative;
   margin: 0 8px !important;
-  color: #fff !important;
+  color: #000 !important;
   transition: all 0.3s;
 }
 
@@ -19,7 +20,7 @@
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #fff;
+  background-color: #000;
   transition: width 0.3s;
 }
 

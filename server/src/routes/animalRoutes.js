@@ -4,7 +4,8 @@ const animalController = require("../controllers/animalController");
 
 router.post("/cadastrar", animalController.cadastrarAnimal);
 router.get("/listar", animalController.listarAnimais);
-router.get("/listarById/:idanimal", animalController.listarAnimalById);
+router.get("/listarTabela", animalController.listarAnimaisTabela);
+router.get("/listarById/:idAnimal", animalController.listarAnimalById);
 router.post("/editar/:idAnimal", animalController.editarAnimal);
 router.post("/inativar/:idAnimal", animalController.inativarAnimal);
 router.delete("/deletar/:idAnimal", animalController.deletarAnimal);

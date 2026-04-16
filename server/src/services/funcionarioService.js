@@ -1,4 +1,5 @@
-const db = require("../db/connection");
+import prisma from '../lib/prisma.js'
+import db from '../db/connection.js'
 
 async function criarFuncionario({ nomeFuncionario, cargoFuncionario, idadeFuncionario }) {
   const query = `
@@ -14,21 +15,13 @@ async function criarFuncionario({ nomeFuncionario, cargoFuncionario, idadeFuncio
 }
 
 async function listarFuncionarios() {
-  const query = `select * from funcionario 
-    order by idFuncionario
-  `;
-
-  const result = await db.query(query);
-  return result.rows;
+  return prisma.funcionario.findMany();
 }
 
 async function listarFuncionarioById({ idFuncionario }) {
-  const query = `select * from funcionario where idFuncionario = $1`;  
-
-  const value = [idFuncionario];
-
-  const result = await db.query(query, value);
-  return result.rows[0];
+  return prisma.funcionario.findUnique({
+    where: { idfuncionario: Number(idFuncionario) }
+  })
 }
 
 async function editarFuncionario({ idFuncionario, nomeFuncionario, cargoFuncionario, idadeFuncionario }) {
@@ -70,7 +63,7 @@ async function deletarFuncionario({ idFuncionario }) {
   return result;
 }
 
-module.exports = {
+export {
   criarFuncionario,
   listarFuncionarios,
   listarFuncionarioById,

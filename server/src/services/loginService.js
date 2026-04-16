@@ -1,14 +1,12 @@
-const db = require("../db/connection");
+import prisma from '../lib/prisma.js'
+import db from '../db/connection.js'
 
 async function fazerLogin({ emailFuncionario, senhaFuncionario }) {
-  const query = `select * from funcionario where loginFuncionario = $1 and senhaFuncionario = $2`;
-
-  const value = [emailFuncionario, senhaFuncionario];
-
-  const result = await db.query(query, value);
-  return result.rows[0];
+  return prisma.funcionario.findUnique({
+    where: { emailfuncionario: emailFuncionario, senhafuncionario: senhaFuncionario }
+  })
 }
 
-module.exports = {
+export {
   fazerLogin
 };
