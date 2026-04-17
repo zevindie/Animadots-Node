@@ -89,19 +89,9 @@ async function inativarAnimal({ idAnimal }) {
 }
 
 async function deletarAnimal({ idAnimal }) {
-  const animal = await listarAnimalById({ idAnimal });
-  if (animal == undefined) {
-    return animal;
-  }
-
-  const query = `
-    delete from animal where idAnimal = $1
-  `;
-
-  const values = [idAnimal];
-
-  const result = await db.query(query, values);
-  return result;
+  return prisma.animal.delete({
+    where: { idanimal: Number(idAnimal) }
+  })
 }
 
 export {

@@ -7,9 +7,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import './Tabela.css'
+import { Button } from '@mui/material';
 
 type TabelaProps = {
   lista: any[],
+  abrirModal: (item: any) => void
 }
 
 function Tabela(props: TabelaProps) {
@@ -28,6 +30,9 @@ function Tabela(props: TabelaProps) {
                 {coluna}
               </TableCell>
             ))}
+            <TableCell className="table-head" sx={{ maxWidth: 40 }}>
+              <Button className="btn-adicionar">Adicionar</Button>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,6 +43,10 @@ function Tabela(props: TabelaProps) {
                   {row[coluna]}
                 </TableCell>
               ))}
+              <TableCell sx={{ maxWidth: 35 }}>
+                <Button>Editar</Button>
+                <Button onClick={() => props.abrirModal(row)}>Excluir</Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -3,3 +3,8 @@
     font-weight: bolder !important;
     background-color: #beecdf;
 }
+
+.btn-adicionar {
+    background-color: green !important;
+    color: aliceblue !important;
+}
